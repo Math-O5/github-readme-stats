@@ -221,6 +221,18 @@ const themes = {
     text_color: "ffffff",
     bg_color: "20232a",
   },
+  "google-play": {
+    title_color: "#3bccff",
+    icon_color: "ffd400",
+    text_color: "48ff48",
+    bg_color: "ff3333",
+  },
+  "facebook": {
+    title_color: "#ffffff",
+    icon_color: "ffffff",
+    text_color: "ffffff",
+    bg_color: "3b5998",
+  },
 };
 
 module.exports = themes;
