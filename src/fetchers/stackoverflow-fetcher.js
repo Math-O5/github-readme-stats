@@ -6,25 +6,27 @@ require("dotenv").config();
 
 
 
-const fetchStackUser = async (ids) => {
+const stackoverflowUserFetcher = async (ids) => {
   const fetchUser = (variables, token) => {
+    console.log("Variables: ", variables);
     return axios({
       method: "get",
       url: `https://api.stackexchange.com/2.2/users/${variables.login}?order=desc&sort=reputation&site=stackoverflow`,
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/vnd.github.cloak-preview",
         Authorization: `bearer ${token}`,
       },
     });
-  };
+  }
 
   try {
     let res = await retryer(fetchUser, { login: ids });
-    if (res.items) {
-      return res.items;
+    if (res) {
+    // console.log("Fetched: ", res);
+      return res;
     }
   } catch (err) {
+    // console.log("error");
     logger.log(err);
     // just return 0 if there is something wrong so that
     // we don't break the whole app
@@ -32,8 +34,7 @@ const fetchStackUser = async (ids) => {
   }
 };
 
-async function fetchStackUser(
-  ids) {
+async function fetchStackUser(ids) {
   if (!ids) throw Error("Invalid user");
 
   const stack = {
@@ -44,8 +45,8 @@ async function fetchStackUser(
     totalBronzeBagdes: 0,
   };
 
-  let res = await retryer(stackoverflowUserFetcher, { login: ids });
-
+  let res = await retryer(stackoverflowUserFetcher, ids);
+//   console.log("REs: ", res.data);
   if (res.data.errors) {
     logger.error(res.data.errors);
     throw new CustomError(
@@ -54,7 +55,9 @@ async function fetchStackUser(
     );
   }
 
-  const user = res.items;
+  console.log("See");
+
+  const user = res.data.items[0];
   stack.name = user.display_name;
   stack.reputation = user.reputation;
   stack.totalGoldBagdes = user.badge_counts.gold;

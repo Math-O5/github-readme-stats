@@ -11,8 +11,10 @@ const renderStackOverFlowCard = require("../src/cards/stackoverflow-card");
 const blacklist = require("../src/common/blacklist");
 
 module.exports = async (req, res) => {
+  console.log("Aqui api stack", req.query);
   const {
     username,
+    ids,
     hide,
     hide_title,
     hide_border,
@@ -37,10 +39,8 @@ module.exports = async (req, res) => {
   }
 
   try {
-    stack = await fetchStackUser(
-      username,
-    );
-
+    stack = await fetchStackUser(ids);
+    console.log("Stack", stack);
     const cacheSeconds = clampValue(
       parseInt(cache_seconds || CONSTANTS.TWO_HOURS, 10),
       CONSTANTS.TWO_HOURS,
@@ -49,6 +49,7 @@ module.exports = async (req, res) => {
 
     res.setHeader("Cache-Control", `public, max-age=${cacheSeconds}`);
 
+    console.log("stack: ",  stack);
     return res.send(
         renderStackOverFlowCard(stack, {
         hide: parseArray(hide),

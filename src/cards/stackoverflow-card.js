@@ -52,7 +52,7 @@ const {
     } = stack;
     const {
       hide = [],
-      show_icons = false,
+      show_icons = true,
       hide_title = false,
       hide_border = false,
       hide_rank = false,
@@ -75,6 +75,7 @@ const {
       theme,
     });
 
+    
     const STACK = {
         "reputation": {
             icon: icons.star,
@@ -114,6 +115,7 @@ const {
                 shiftValuePos: !include_all_commits,
             })
         );
+      console.log("Items", stackItems);
 
     // Calculate the card height depending on how many items there are
     // but if rank circle is visible clamp the minimum height to `150`
@@ -127,12 +129,11 @@ const {
         textColor,
         iconColor,
         show_icons,
-        progress,
       });
     
     const apostrophe = ["x", "s"].includes(name.slice(-1)) ? "" : "s";
     const card = new Card({
-        title: `${encodeHTML(name)}'${apostrophe} StackOverlow Metric`,
+        title: `${encodeHTML(name)}'${apostrophe} StackOverlow`,
         width: 495,
         height,
         colors: {

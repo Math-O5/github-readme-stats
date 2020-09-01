@@ -172,8 +172,8 @@ const CONSTANTS = {
 };
 
 const SECONDARY_ERROR_MESSAGES = {
-  MAX_RETRY: process.env.PAT_1,
-    // "Please add an env variable called PAT_1 with your github token in vercel",
+  MAX_RETRY:
+    "Please add an env variable called PAT_1 with your github token in vercel",
   USER_NOT_FOUND: "Make sure the provided username is not an organization",
 };
 
