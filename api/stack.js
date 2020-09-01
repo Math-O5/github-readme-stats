@@ -28,7 +28,7 @@ module.exports = async (req, res) => {
     text_color,
     bg_color,
     theme,
-    cache_seconds=1,
+    cache_seconds,
   } = req.query;
   let stack;
 
