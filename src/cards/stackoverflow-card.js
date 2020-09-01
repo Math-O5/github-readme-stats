@@ -79,25 +79,25 @@ const {
     const STACK = {
         "reputation": {
             icon: icons.star,
-            label: "Total Bagde Gold",
+            label: "Reputation",
             value: reputation,
             id: "o",
         },
         "totalGoldBagdes": {
-            icon: icons.star,
-            label: "Total Bagde Gold",
+            icon: icons.gold,
+            label: "Total Gold",
             value: totalGoldBagdes,
             id: "totalGoldBagdes",
         },
         "totalSilverBagdes": {
-            icon: icons.star,
-            label: "Total Badge Silver",
+            icon: icons.silver,
+            label: "Total Silver",
             value: totalSilverBagdes,
             id: "totalSilverBagdes",
         },
         "totalBronzeBagdes": {
-            icon: icons.star,
-            label: "Total Bagde Bronze",
+            icon: icons.bronze,
+            label: "Total Bronze",
             value: totalBronzeBagdes,
             id: "totalBronzeBagdes",
         },
